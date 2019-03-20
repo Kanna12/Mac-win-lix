@@ -22,7 +22,7 @@ install:
   - npm install
   - npm install -g electron electron-builder
  script:
- - np run electron-builder  
+ - np run
   #- npm run package-mac
   #- pwd
   # - npm run package-win
