@@ -39,11 +39,11 @@ script:
 deploy:
   provider: releases
   file: "archive.zip"
-  api_key: $semantic # Set in the settings page of your repository, as a secure variable
+  api_key: $mac # Set in the settings page of your repository, as a secure variable
   keep-history: true
   
   on:
-  repo: Kanna12/Update
+  repo: Kanna12/Mac-win-lix
   skip_cleanup: true
   all_branches: true
   tags: true
