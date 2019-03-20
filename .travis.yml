@@ -20,7 +20,7 @@ install:
   - git config --global user.name "kanna12"
   - git config --global user.email "kgoku98@gmail.com"
   - npm install
-  - npm install -g electron electron-packager electron-builder
+  - npm install -g electron electron-builder
 script:
    - npm run 
   #- npm run package-mac
