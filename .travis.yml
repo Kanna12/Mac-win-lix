@@ -25,11 +25,12 @@ install:
   - npm install
   - npm install -g electron electron-packager electron-builder
 script:
-  - npm run package-mac
-  - pwd
-  - npm run package-win
-  - pwd 
-  - npm run package-linux
+   - npm run dist
+  #- npm run package-mac
+  #- pwd
+ # - npm run package-win
+  #- pwd 
+  #- npm run package-linux
   - ls -ltr .
   - zip -r archive.zip ./release-builds
   # - git add ./release-builds
