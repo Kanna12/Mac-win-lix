@@ -21,8 +21,8 @@ install:
   - git config --global user.email "kgoku98@gmail.com"
   - npm install
   - npm install -g electron electron-builder
-script:
-  
+ script:
+ - np run electron-builder  
   #- npm run package-mac
   #- pwd
   # - npm run package-win
@@ -34,6 +34,9 @@ script:
   # - git commit -m "Build successful 1.0.0"
   # - git push origin master
   
+
+
+
 deploy:
   provider: releases
   file: "archive.zip"
