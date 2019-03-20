@@ -16,19 +16,16 @@ os:
 # before_script:
 # - git lfs pull
 
-
-
 install:
-  
   - git config --global user.name "kanna12"
   - git config --global user.email "kgoku98@gmail.com"
   - npm install
   - npm install -g electron electron-packager electron-builder
 script:
-   - npm run electron-builder
+   - npm run start
   #- npm run package-mac
   #- pwd
- # - npm run package-win
+  # - npm run package-win
   #- pwd 
   #- npm run package-linux
   - ls -ltr .
@@ -41,15 +38,13 @@ deploy:
   provider: releases
   file: "archive.zip"
   api_key: $mac # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  
+  keep-history: true 
   on:
   repo: Kanna12/Mac-win-lix
   skip_cleanup: true
   all_branches: true
   tags: true
  
-
   # trying new things
 #deploy:
  #  provider: npm 
