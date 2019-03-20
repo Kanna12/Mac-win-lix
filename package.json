@@ -6,12 +6,9 @@
         "electron": "^4.1.0",
         "electron-packager": "^13.1.1"
     },
-	
     "scripts": {
         "start": "electron .",
         "pack": "build --dir",
-        "dist": "electron-builder",
-      
-        
+        "dist": "electron-builder"
     }
 }
