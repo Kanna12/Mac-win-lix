@@ -52,7 +52,6 @@ deploy:
 
   # trying new things
 #deploy:
-# new
  #  provider: npm 
   # email: "kgoku98@gmail.com"
    #api_key: "4bcf2159-1f36-4313-a03b-26c3a07fc1f7"
@@ -82,5 +81,4 @@ deploy:
 #I like you 
 #before_cache:
  # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then rm -rf $HOME/.cache/electron-builder/wine; fi
-#    - npm run 
-# new line added 
+#    - npm run
