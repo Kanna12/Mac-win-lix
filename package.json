@@ -1,6 +1,6 @@
 {
     "name": "hello-world",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "main": "main.js",
     "devDependencies": {
         "electron": "^4.1.0",
@@ -10,6 +10,20 @@
     "scripts": {
         "start": "electron .",
         "pack": "build --dir",
-        "dist": "electron-builder"
-    }
+        "dist": "build",
+		"pack-win": "build --dir --win",
+        "dist-win": "build --win"
+    },
+	"build": {
+	  "appId": "your.kanna",
+	  "mac": {
+		"target": "dmg",
+	  "icon": "build/icon.png"  
+			},
+	  "win": {
+		"target": [
+			"zip"
+		]
+	   }
+	}
 }

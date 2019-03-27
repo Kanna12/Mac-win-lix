@@ -6,77 +6,71 @@ sudo: required
 language: node_js
 node_js:
   - "7"
-os: 
-   - osx
-   - linux
-   - win
-# before_install:
-# - brew install git-lfs
 
-# before_script:
-# - git lfs pull
+os: 
+ - linux
+ - osx
+
+dist: xenial
+
+cache:
+  directories:
+    - node_modules
+    - $HOME/.cache/electron
+    - $HOME/.cache/electron-builder
+
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine
 
 install:
+  
   - git config --global user.name "kanna12"
   - git config --global user.email "kgoku98@gmail.com"
   - npm install
-  - npm install -g electron electron-builder
- script:
- - np run
-  #- npm run package-mac
-  #- pwd
-  # - npm run package-win
-  #- pwd 
-  #- npm run package-linux
-  - ls -ltr .
-  - zip -r archive.zip ./release-builds
-  # - git add ./release-builds
-  # - git commit -m "Build successful 1.0.0"
-  # - git push origin master
+  - npm install -g electron electron-packager electron-builder
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
   
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo dpkg --add-architecture i386; wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -; sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main'; sudo apt-get update; sudo apt-get install --install-recommends winehq-stable; wine --version; fi
+  
+   
+script:
+  - npm run dist
+  - pwd
+  - ls -ltr .
+  - zip -r archive.zip ./dist
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rm -rf dist; npm run pack-win ; pwd ; ls -ltr .; zip -r mac-archive.zip ./dist; fi
 
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then rm -rf dist; npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip ./dist; fi
 
-
+  
 deploy:
-  provider: releases
-  file: "archive.zip"
-  api_key: $mac # Set in the settings page of your repository, as a secure variable
-  keep-history: true 
-  on:
-  repo: Kanna12/Mac-win-lix
-  skip_cleanup: true
-  all_branches: true
-  tags: true
- 
-  # trying new things
-#deploy:
- #  provider: npm 
-  # email: "kgoku98@gmail.com"
-   #api_key: "4bcf2159-1f36-4313-a03b-26c3a07fc1f7"
+    - provider: releases
+      file: "archive.zip"
+      api_key: $semantic # Set in the settings page of your repository, as a secure variable
+      on:
+      repo: Kanna12/Semantic-version
+      skip_cleanup: true
+      all_branches: true
+      overwrite: true
+    - provider: releases
     
-   # github-token: $GITHUB_TOKEN
-   # file: "release-build"
-    #skip_cleanup: true
-    #on:
-     #tags: true
-     #branch: master
- 
-#- echo "Unit Tests"
-#new line added 
-#- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then xvfb-run yarn test; else yarn test; fi
+      file: "win-archive.zip"
+      api_key: $semantic # Set in the settings page of your repository, as a secure variable
+      on:
+      condition: "$TRAVIS_OS_NAME = osx"
+      repo: Kanna12/Semantic-version
+      skip_cleanup: true
+      all_branches: true
+      overwrite: true
 
-#- echo "E2E Tests"
-#- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then xvfb-run yarn test:electron; else yarn test:electron; fi
-
-#- echo "Deploy linux version to GitHub"
-#- if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_OS_NAME" == "linux" ]]; then yarn release:linux; fi
-
-#- echo "Deploy windows version to GitHub"
-#- if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn release:win; fi
-#SHSJOPSKK#
-#- echo "Deploy mac version to GitHub"
-#- if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_OS_NAME" == "osx" ]]; then dist release:mac; fi
-#I like you 
-#before_cache:
- # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then rm -rf $HOME/.cache/electron-builder/wine; fi
-#    - npm run
+    - provider: releases
+    
+      file: "win-archive.zip"
+      api_key: $semantic # Set in the settings page of your repository, as a secure variable
+      on:
+      condition: "$TRAVIS_OS_NAME = linux"
+      repo: Kanna12/Semantic-version
+      skip_cleanup: true
+      all_branches: true
+      overwrite: true
