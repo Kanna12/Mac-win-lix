@@ -14,7 +14,7 @@
 		"pack-win": "build --dir --win",
 		"pack-mac": "build --dir --mac",
         "dist-win": "build --win"
-		"dist-mac": "build --mac"
+	
     },
 	"build": {
 	  "appId": "your.kanna",
