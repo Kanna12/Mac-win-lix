@@ -47,7 +47,7 @@ script:
 deploy:
     - provider: releases
       file: "archive.zip"
-      api_key: $semantic # Set in the settings page of your repository, as a secure variable
+      api_key: $mac # Set in the settings page of your repository, as a secure variable
       on:
       repo: Kanna12/Semantic-version
       skip_cleanup: true
@@ -56,7 +56,7 @@ deploy:
     - provider: releases
     
       file: "win-archive.zip"
-      api_key: $semantic # Set in the settings page of your repository, as a secure variable
+      api_key: $mac # Set in the settings page of your repository, as a secure variable
       on:
       condition: "$TRAVIS_OS_NAME = osx"
       repo: Kanna12/Semantic-version
@@ -67,7 +67,7 @@ deploy:
     - provider: releases
     
       file: "win-archive.zip"
-      api_key: $semantic # Set in the settings page of your repository, as a secure variable
+      api_key: $mac # Set in the settings page of your repository, as a secure variable
       on:
       condition: "$TRAVIS_OS_NAME = linux"
       repo: Kanna12/Semantic-version
