@@ -38,9 +38,8 @@ script:
   - npm run dist
   - pwd
   - ls -ltr .
-  - zip -r archive.zip ./dist
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run pack-mac; pwd ; ls -ltr .; zip -r mac-archive.zip ./dist; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then rm -rf dist; npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip ./dist; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pwd ; ls -ltr .; zip -r mac-archive.zip ./dist; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r archive.zip ./dist; rm -rf dist; npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip ./dist; fi
 
   
 deploy:
