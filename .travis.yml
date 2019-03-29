@@ -51,9 +51,9 @@ deploy:
       skip_cleanup: true
       all_branches: true
       overwrite: true
+      
     - provider: releases
-    
-      file: "win-archive.zip"
+      file: "mac-archive.zip"
       api_key: $mac # Set in the settings page of your repository, as a secure variable
       on:
       condition: "$TRAVIS_OS_NAME = osx"
@@ -63,7 +63,6 @@ deploy:
       overwrite: true
 
     - provider: releases
-    
       file: "win-archive.zip"
       api_key: $mac # Set in the settings page of your repository, as a secure variable
       on:
