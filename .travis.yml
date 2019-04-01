@@ -1,73 +1,44 @@
-#dist: trusty # needs Ubuntu Trusty
-# Note: if you switch to sudo: false, you'll need to launch chrome with --no-sandbox.
-# See https://github.com/travis-ci/travis-ci/issues/8836
 sudo: required
-
 language: node_js
 node_js:
-  - "7"
-
-os: 
- - linux
- - osx
-
+- '7'
+os:
+- linux
+- osx
 dist: xenial
-
 cache:
   directories:
-    - node_modules
-    - $HOME/.cache/electron
-    - $HOME/.cache/electron-builder
-
+  - node_modules
+  - "$HOME/.cache/electron"
+  - "$HOME/.cache/electron-builder"
 before_cache:
-  - rm -rf $HOME/.cache/electron-builder/wine
-
+- rm -rf $HOME/.cache/electron-builder/wine
 install:
-  
-  - git config --global user.name "kanna12"
-  - git config --global user.email "kgoku98@gmail.com"
-  - npm install
-  - npm install -g electron electron-packager electron-builder
-  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-  - git tag $TRAVIS_TAG
-  
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo dpkg --add-architecture i386; wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -; sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main'; sudo apt-get update; sudo apt-get install --install-recommends winehq-stable; wine --version; fi
-  
-   
+- git config --global user.name "kanna12"
+- git config --global user.email "kgoku98@gmail.com"
+- npm install
+- npm install -g electron electron-packager electron-builder
+- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+- git tag $TRAVIS_TAG
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo dpkg --add-architecture i386; wget
+  -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -; sudo apt-add-repository
+  'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main'; sudo apt-get update;
+  sudo apt-get install --install-recommends winehq-stable; wine --version; fi
 script:
-  - npm run dist
-  - pwd
-  - ls -ltr .
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pwd ; ls -ltr .; zip -r mac-archive.zip ./dist; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r archive.zip ./dist; rm -rf dist; npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip ./dist; fi
-
-  
+- npm run dist
+- pwd
+- ls -ltr .
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pwd ; ls -ltr .; zip -r mac-archive.zip
+  ./dist; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r archive.zip ./dist; rm -rf dist;
+  npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip ./dist; fi
 deploy:
-    - provider: releases
-      file: "archive.zip"
-      api_key: $mac # Set in the settings page of your repository, as a secure variable
-      on:
-      repo: Kanna12/Mac-win-lix
-      skip_cleanup: true
-      all_branches: true
-      overwrite: true
-      
-    - provider: releases
-      file: "mac-archive.zip"
-      api_key: $mac # Set in the settings page of your repository, as a secure variable
-      on:
-      condition: "$TRAVIS_OS_NAME = osx"
-      repo: Kanna12/Mac-win-lix
-      skip_cleanup: true
-      all_branches: true
-      overwrite: true
-
-    - provider: releases
-      file: "win-archive.zip"
-      api_key: $mac # Set in the settings page of your repository, as a secure variable
-      on:
-      condition: "$TRAVIS_OS_NAME = linux"
-      repo: Kanna12/Mac-win-lix
-      skip_cleanup: true
-      all_branches: true
-      overwrite: true
+  provider: s3
+  access_key_id: AKIAQ5N4EWDLH4RUHJAV
+  secret_access_key:
+    secure: i485HChDAFYsJF4gGYWBm3Dcvku8wXazkpBEvQ6F1GBIE1PiT4hpkW3Wv2CI4AEZ5h3gA0uiD/UxgYaNU8X1m4RfhzYZ3+9/eHa6SRUFtFtc5Uye3JqVSqW8az+gwyhAd8Uaot4ibZGEsr8oJ2QfFZgbBVBNPCTop4g3pd1GBQdo/X5J+KmC4CEgdTLHx41FI7aAXbYNGDHUn2HMGhq+1tcNrZfS3ROvOWAu+0lPLfTz+UKKmrrGhwzHgxvYU9CTn/5VoLtGv9L6C4CXlUOMMhF1JuC4vVP01o/eiuUllNdEvafLM/UN2AKIaxoYVA4z3yDZrg9bAwSFfDC5iKxyLFg6JTcdoj2s88b7SReOn7UCY5lmEYY+yBxJdH1ltd0dBDl8tcj+ZzrY/Q4Sae7PRiKhYc1lrnoVgx72u0lSaIUy4z5yO0QalGscsB02D8GeshzIZ+j0PuP+oagGAOFu3IBnDt+17ZVL7VuPAUfhQ3fMPgZ1s6bWm0zON8LLZ8+Mm1jfv43FPJB5SCsfqsu3Ujou1egBzsBlgPREmWj4QA5PqUbsoDG6uWX2wB1AokBlRdLAKCh2CyZOWVgfV/G7NZTL/ySe54gChLQrLSkh/OdNOLKNQj5tjd6aRfiW/FB7goXFkT9CjLsQFFc71P+scvGvxGf3JJmNGrKCJMknVCc=
+  bucket: electron-deployment
+  acl: ''
+  on:
+    repo: Kanna12/Mac-win-lix
+    
