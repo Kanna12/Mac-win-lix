@@ -38,6 +38,7 @@ deploy:
   secret_access_key:
     secure: i485HChDAFYsJF4gGYWBm3Dcvku8wXazkpBEvQ6F1GBIE1PiT4hpkW3Wv2CI4AEZ5h3gA0uiD/UxgYaNU8X1m4RfhzYZ3+9/eHa6SRUFtFtc5Uye3JqVSqW8az+gwyhAd8Uaot4ibZGEsr8oJ2QfFZgbBVBNPCTop4g3pd1GBQdo/X5J+KmC4CEgdTLHx41FI7aAXbYNGDHUn2HMGhq+1tcNrZfS3ROvOWAu+0lPLfTz+UKKmrrGhwzHgxvYU9CTn/5VoLtGv9L6C4CXlUOMMhF1JuC4vVP01o/eiuUllNdEvafLM/UN2AKIaxoYVA4z3yDZrg9bAwSFfDC5iKxyLFg6JTcdoj2s88b7SReOn7UCY5lmEYY+yBxJdH1ltd0dBDl8tcj+ZzrY/Q4Sae7PRiKhYc1lrnoVgx72u0lSaIUy4z5yO0QalGscsB02D8GeshzIZ+j0PuP+oagGAOFu3IBnDt+17ZVL7VuPAUfhQ3fMPgZ1s6bWm0zON8LLZ8+Mm1jfv43FPJB5SCsfqsu3Ujou1egBzsBlgPREmWj4QA5PqUbsoDG6uWX2wB1AokBlRdLAKCh2CyZOWVgfV/G7NZTL/ySe54gChLQrLSkh/OdNOLKNQj5tjd6aRfiW/FB7goXFkT9CjLsQFFc71P+scvGvxGf3JJmNGrKCJMknVCc=
   bucket: electron-deployment
+  skip_cleanup: true
   on:
     repo: Kanna12/Mac-win-lix
     
