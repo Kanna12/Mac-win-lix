@@ -31,9 +31,9 @@ script:
 - fname=$(date +%y%m%d); cd builds; mkdir fname;
 - ls -ltr .
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pwd ; ls -ltr .; zip -r mac-archive.zip
-  ./dist; mv mac-archive.zip builds/fname; fi
+  ./dist; mv mac-archive.zip builds/$fname; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r archive.zip ./dist; mv archive.zip builds; rm -rf dist;
-  npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip ./dist; mv win-archive.zip builds/fname; fi
+  npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip ./dist; mv win-archive.zip builds/$fname; fi
 deploy:
   provider: s3
   access_key_id: AKIAQ5N4EWDLH4RUHJAV
