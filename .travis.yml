@@ -12,27 +12,27 @@ cache:
   - "$HOME/.cache/electron"
   - "$HOME/.cache/electron-builder"
 before_cache:
-  - rm -rf $HOME/.cache/electron-builder/wine
+- rm -rf $HOME/.cache/electron-builder/wine
 install:
-  - git config --global user.name "kanna12"
-  - git config --global user.email "kgoku98@gmail.com"
-  - npm install
-  - npm install -g electron electron-packager electron-builder
-  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-  - git tag $TRAVIS_TAG
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo dpkg --add-architecture i386; wget
+- git config --global user.name "kanna12"
+- git config --global user.email "kgoku98@gmail.com"
+- npm install
+- npm install -g electron electron-packager electron-builder
+- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+- git tag $TRAVIS_TAG
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo dpkg --add-architecture i386; wget
   -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -; sudo apt-add-repository
   'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main'; sudo apt-get update;
   sudo apt-get install --install-recommends winehq-stable; wine --version; fi
 script:
-  - npm run dist
-  - pwd
-  - mkdir builds
-  - fname=$(date +%y%m%d); mkdir builds/$fname;
-  - ls -ltr .
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pwd ; ls -ltr .; zip -r mac-archive.zip
+- npm run dist
+- pwd
+- mkdir builds
+- fname=$(date +%y%m%d); mkdir builds/$fname;
+- ls -ltr .
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pwd ; ls -ltr .; zip -r mac-archive.zip
   ./dist; mv mac-archive.zip builds/$fname; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r archive.zip ./dist; mv archive.zip builds/$fname; rm -rf dist;
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r archive.zip ./dist; mv archive.zip builds/$fname; rm -rf dist;
   npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip ./dist; mv win-archive.zip builds/$fname; fi
 deploy:
   provider: s3
