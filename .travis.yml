@@ -43,5 +43,5 @@ deploy:
   local-dir: builds
   region: us-east-2
   skip_cleanup: true
-  on:
-    repo: Kanna12/Mac-win-lix
+  # on:
+    # repo: Kanna12/Mac-win-lix
