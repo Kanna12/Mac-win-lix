@@ -35,6 +35,8 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r archive.zip ./dist; mv archive.zip
   builds/$fname; rm -rf dist; npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip
   ./dist; mv win-archive.zip builds/$fname; fi
+before_deploy:
+  - rvm 1.9.3 do gem install aws-sdk -v 2.1.36
 deploy:
 - provider: s3
   access_key_id: AKIAQ5N4EWDLFPQXWFEW
