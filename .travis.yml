@@ -37,7 +37,7 @@ script:
   ./dist; mv win-archive.zip builds/$fname; fi
 
 deploy:
-- provider: s3
+  provider: s3
   access_key_id: AKIAW6BIZT5R6F3SDR7Z
   secret_access_key:
     secure: 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
