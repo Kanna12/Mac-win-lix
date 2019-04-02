@@ -43,6 +43,5 @@ deploy:
     secure: m3U/z1sqic/Oy+IaasmtQbArYNnzqDzsIWxxd3T+
   bucket: electron-deploy
   skip_cleanup: true
-  local-dir: builds
   on:
     repo: Kanna12/Mac-win-lix
