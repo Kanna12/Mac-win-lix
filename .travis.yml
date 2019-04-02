@@ -38,10 +38,10 @@ script:
 
 deploy:
 - provider: s3
-  access_key_id: $Access
+  access_key_id: AKIAW6BIZT5R6F3SDR7Z
   secret_access_key:
-    secure: $secret
-  bucket: electron-deployment
+    secure: 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
+  bucket: electron-deploy
   skip_cleanup: true
   local-dir: builds
   on:
