@@ -38,7 +38,8 @@ script:
 deploy:
   provider: s3
   access_key_id: "$Access"
-  secret_access_key: "$secret"
+  secret_access_key: 
+     secure: "$secret"
   bucket: 'electron-deployment'
   skip_cleanup: true
   region: us-east-2
