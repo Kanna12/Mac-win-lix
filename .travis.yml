@@ -37,11 +37,9 @@ script:
   ./dist; mv win-archive.zip builds/$fname; fi
 deploy:
   provider: s3
-  access_key_id: $access_key_id
-  secret_access_key: $secret_access_key
+  access_key_id: $Access
+  secret_access_key: $secret
   bucket: electron-deployment
-  local-dir: builds
-  region: us-east-2
   skip_cleanup: true
-  # on:
-    # repo: Kanna12/Mac-win-lix
+  on:
+    repo: Kanna12/Mac-win-lix
