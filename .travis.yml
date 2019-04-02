@@ -37,8 +37,8 @@ script:
   ./dist; mv win-archive.zip builds/$fname; fi
 deploy:
   provider: s3
-  access_key_id: AKIAQ5N4EWDLGNZKRLNA
-  secret_access_key: cXu4u0ME1a38+rXWaHb9uL8IJDpMQENjvBjnnLRwTVCxV8gPvI/uZODPFeR0mnkDyt12cl/XXWTrGXAc8WyAO11fBdO1a+LUUo/HLJOmP7e1z/7Ix9v57cpMjcOodxksaGU0jmskn697/FfU+RTAdw2uhsqD5Oj9lrsvtTve+v7GciYu+UG3vsYavLWLEsjU24ac5jPuGcgaRsLRMKBk+amVhYXtTELmUTbOBdb08OtI2P7svOLZqW1qgkjDj+RcRz+dsCSpZcxeiH00dk6LTHOmHcDu4/uzmwYGgrecdAo6YVWtFuJr73m3jyyVQWBa6cU9RAn7G0Uo+EgQ83vkkoqZaxR09kGjyQbiG+VbY3nlxje6l66aQnVUz0h/3ohX3vfmBzzyhaMYMWFLprz4JtYHdpazJTs1gp4Ph8oXGm9nmzhubc7r6v1G4Ek6v8j9fwMOd1HKRZJtV/mUuf4Pl6CnXfjYoHAjqAvgkTB/iqj+/6aZ/YwrUNCwCpLc6Ibm8M8Ux8KOh/PYMdVt0DPCrO3T2htBVb6MYvEuxvjKbBGU7x+hvSL93qIRY9gCYMpYYEYqnl41ElKRK4oZULFIHLjVNIF1wSaad7YGt+dWq4oUou2iPNz4c1YFX6SQ1D+fdrd6Pw1G5B5POT4W+zZpJJXyQ6iEC0kO7PyTB15sMIc=
+  access_key_id = $access_key_id
+  secret_access_key = $secret_access_key
   bucket: electron-deployment
   local-dir: builds
   region: us-east-2
