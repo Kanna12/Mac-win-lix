@@ -41,7 +41,7 @@ deploy:
   access_key_id: AKIAW6BIZT5R6F3SDR7Z
   secret_access_key:
     secure: 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
-  bucket: electron-deploy
+  bucket: electron-1
   skip_cleanup: true
   on:
     repo: Kanna12/Mac-win-lix
