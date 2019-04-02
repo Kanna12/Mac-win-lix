@@ -41,7 +41,5 @@ deploy:
   secret_access_key:
     secure: azWex1QqpSwMT/7P5YiUExHwjSdszMkDf9cY9AB1X21PDuBYMErHWPu0T9BlRexA6Eut/9PSmhBw0nGCvuTaqhQNcCy1DyR3LjONIi9fc8djaRpExKWguKTjl76cT0J8CK7pnv/jpj2RepKrTVcn1jMXQEXYVpZ+/JTMO60JKeFIzaHMiwONa9KOvdYzSDJLdCoEnIVI6ZEAijxHeDGZjlMPVEXTXZa+LA1sphvlT8LeDGpZNuEvw9ec/TDkO0jNvNCri42QJkFoN9JFXEOfc2pomaxnNFhRq7t4+Z7JQnVcVVnZJqWPBbEGAF9/+91gl5rLm77S1mP+i2BOeMC5CzD5oKoPs0fh7x0aSDaBGGziO2XcxEgnp6zRuKhvYrxVlWyg5tvlNgnFNp8Dqe8/+Z5+OWifYI/zc13MaaNGURx654xer7hV2nIsSUjYkcvmIqqZ6lOm6T0dnAn74uRwEvvf2oXw1C/APXi13jesJ8HO6ics+yLOazYuRShbB8fWFVD1fYqVjuUgL33MmKmS+sR+pd1Zo3RyDS8cHbeKBiHlWyO06CdaXIhwy/KPXW4Mst02Mw0vxdtF39YgJq7KaXv8ZOhgjsjoF8HJbtilwx4ajwj3H5PCK8FG2VelhzVZhKBN1qF0v4SEGS/GLNhsd2TJ84jeOVF36222caXJeSE=
   bucket: electron-deployment
-  local-dir: builds
-  region: us-east-2
   on:
     repo: Kanna12/Mac-win-lix
