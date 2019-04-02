@@ -40,7 +40,7 @@ deploy:
   access_key_id: "$Access"
   secret_access_key: "$secret"
   region: us-east-1
-  bucket: electron-deployment
+  bucket: 'electron-deployment'
   skip_cleanup: true
   on:
     repo: Kanna12/Mac-win-lix
