@@ -38,11 +38,9 @@ script:
 
 deploy:
 - provider: s3
-  edge:
-    branch: s3-backward-compat
-  access_key_id: AKIAQ5N4EWDLFPQXWFEW
+  access_key_id: $Access
   secret_access_key:
-    secure: Y30qVA3mms2OnFY2y4FuLgRZtA63Rtp9vnCXrK1FeYPhT2ZbTGFugrdRieI6eubpYonE+E62Yn7RL4mE+qRwwwlS//C6mkc2BGkgA320S6CdCqFnheqsaLsQV+VFe6LIcSv8SlwlWiMpe5lyNZAFkJWRBi+FaTLm/1LFpzYqjLgcJ/ik1YbnJyoSPlL5mMSuDJZ8ESCVZx3z1XSF6DFPKbDrBAMtbr/z+jHRhiJYAs6gM+7Ys49xC8V1Kz4qMT9tlRlzJzyQ0XwE6AoixXD0C8+6xNhNuVn6Lj6mvRWK6vB/snjGH8iY/FSzhvu2SRtxOooRd1JazyGi/N6UICwkO3sBdcI6lz4mfb6EPRF8xlQhvAxPbtw2I0tKHu82QgjFljRtN0Mc/4yXxPLcF6FgmVd93HI3+esUHt+R6HN9F0uH10ZmgI45EH+y3nRRq4qjQ5JzrvZ8qRrVRieIqI8yYUu4psEbl/tDDUjSaUUO1tKCrjTuhyWfU4tg+kHah3ASaeqvPbzqG1vvjE/8iNeSsm68b8HsIt3buQ8ZJQhRAuSz2pE6bu/aPw2KCHNvYqwGC7NXP2N0PmBgHjJbN6KWtQD6CDtqT6LGizeOMRAktcnMH5VwGvUS1b/o4S5ym2pygbx7P8Tz6A+A6z889RTYPcWLBxT6Mp3dxrey3stOxEw=
+    secure: $secret
   bucket: electron-deployment
   local-dir: builds
   skip_cleanup: true
