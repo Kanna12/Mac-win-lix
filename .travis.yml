@@ -37,11 +37,10 @@ script:
   ./dist; mv win-archive.zip builds/$fname; fi
 deploy:
   provider: s3
-  access_key_id: $key
+  access_key_id: AKIAW6BIZT5RQ2AX43OM
   secret_access_key:
-    secure: $sem
+    secure: LmpPx7hVvTenFhlxDoOBrLqpXiAQv4xA1ikkoDvufZUZVpbt/k20B5rWj7zD5crQILEvWR7uWPj6BvLmXyfrPKTgL6u13Ch45vL/V9PsNLs+BK/kYFNJHnuJoaPHEbGv51ORqo4278CBATmH+4V2qHfPYCJKkPae5NbpGMf0okt785MMdupBQsaVwsPq6iwyEb2y/+i71IwaMd9aCevQ2O8ogIh1a8PtEEM0s/Ktm+MJBZLiIA5werheOCtiEH7LIwJVvXfIlAu3Bjd9o0jGG9xUmVk+tEWc94KIdBzSVn9Ub8pkdp0OAwCvsmFOUJwcqVrC0jofp40er0hWfeeBCNrOE7qg1PDTn9D3EE2UcDS8Bs0iv801UylUysdYHlI5zrYBmSY9OnvUx/SUOAwpemueRuQkzupEChSoxuCJ9CyBqkJBapsmMvLP3GfVz2h52lW+q1A0k8rJKXyRe9gOIyY0vWnHRJEK+CD8mqA5D27MJQ5arxSddcX+JDCcf4AUPi+byiSyvdzqgp+ZOXlb15mMBeyZ0VVrjbxhVfL0msiy7ZIJLlSg6mx3mfw4y34+zr41y+z5Hho2n/cfhA4ldBvuaxiWiVrlw3vjFBEFGkm1RoK3CrNghBsPHLfPuVtsJOKOGul7ACHKPNhxAVLQzVX0RrnG5oYBmRSv4QNdCE4=
   bucket: electron-deploy
-  skip_cleanup: true
-  region: us-east-1
+  acl: ''
   on:
     repo: Kanna12/Mac-win-lix
