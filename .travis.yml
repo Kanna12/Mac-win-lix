@@ -42,6 +42,6 @@ deploy:
     secure: $Secret_key
   bucket: electron-deployment
   skip_cleanup: true
-  region: us-east-2
+ # region: us-east-2
   on:
     repo: Kanna12/Mac-win-lix
