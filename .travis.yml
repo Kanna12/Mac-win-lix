@@ -39,7 +39,7 @@ jobs:
   include:
     - stage: deploy
       script: skip
-      deploy: &s3
+      deploy: 
           provider: s3
           access_key_id: $key1
           secret_access_key:
