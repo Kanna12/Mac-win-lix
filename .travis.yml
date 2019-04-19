@@ -37,8 +37,9 @@ script:
   ./dist; mv win-archive.zip builds/$fname; fi
 jobs:
   include:
-    - stage: deploy  
-      deploy:
+    - stage: deploy
+      script: skip
+      deploy: &s3
           provider: s3
           access_key_id: $key1
           secret_access_key:
