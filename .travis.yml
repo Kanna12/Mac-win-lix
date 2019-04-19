@@ -35,13 +35,18 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r archive.zip ./dist; mv archive.zip
   builds/$fname; rm -rf dist; npm run pack-win ; pwd ; ls -ltr .; zip -r win-archive.zip
   ./dist; mv win-archive.zip builds/$fname; fi
-#deploy:
- # provider: s3
- # access_key_id: $key1
- # secret_access_key:
- #   secure: $sem1
- # bucket: electron-deploy
- # skip_cleanup: true
- # region: us-east-1
-#  on:
-   # repo: Kanna12/Mac-win-lix
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+      script: skip
+      deploy:
+          provider: s3
+          access_key_id: $key1
+          secret_access_key:
+          secure: $sem1
+          bucket: electron-deploy
+   skip_cleanup: true
+   region: us-east-1
+   on:
+     repo: Kanna12/Mac-win-lix
