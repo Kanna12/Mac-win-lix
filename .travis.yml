@@ -37,15 +37,14 @@ script:
   ./dist; mv win-archive.zip builds/$fname; fi
 jobs:
   include:
-    - stage: test
-      script: skip 
+    - stage: deploy  
       deploy:
           provider: s3
           access_key_id: $key1
           secret_access_key:
           secure: $sem1
           bucket: electron-deploy
-   skip_cleanup: true
-   region: us-east-1
-   on:
-     repo: Kanna12/Mac-win-lix
+          skip_cleanup: true
+          region: us-east-1
+          on:
+          repo: Kanna12/Mac-win-lix
