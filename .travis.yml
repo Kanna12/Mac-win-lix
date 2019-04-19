@@ -43,9 +43,9 @@ jobs:
           provider: s3
           access_key_id: $key1
           secret_access_key:
-          secure: $sem1
+            secure: $sem1
           bucket: electron-deploy
           skip_cleanup: true
           region: us-east-1
           on:
-          repo: Kanna12/Mac-win-lix
+            repo: Kanna12/Mac-win-lix
